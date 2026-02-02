@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 99%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 99%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 9%;
+  }
+
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 90%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+/* ——— Noise grain (grayscale only) ——— */
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+}
+.dark .noise {
+  opacity: 0.05;
+}
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
+}
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* ——— Soft moving gradient / spotlight (grayscale) ——— */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% -20%,
+    hsl(0 0% 50% / 0.08),
+    transparent
+  );
+  pointer-events: none;
+}
+.dark .spotlight {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% -20%,
+    hsl(0 0% 100% / 0.04),
+    transparent
+  );
+}
+
+/* ——— Thin grid (very subtle) ——— */
+.grid-lines {
+  background-image:
+    linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ——— Animated moving grid (very subtle) ——— */
+.grid-lines-animated {
+  background-image:
+    linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: grid-drift 20s linear infinite;
+}
+@keyframes grid-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 48px 48px; }
+}
+
+/* ——— Section spacing ——— */
+.section-padding {
+  @apply py-24 md:py-32 px-4 sm:px-6 lg:px-8;
+}
+
+/* ——— Underline reveal (for links) ——— */
+.underline-reveal {
+  position: relative;
+}
+.underline-reveal::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease;
+}
+.underline-reveal:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}

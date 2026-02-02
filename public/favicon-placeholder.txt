@@ -1,0 +1,2 @@
+Replace this file with your favicon.ico (or add favicon.ico here).
+Next.js will serve /favicon.ico from the public folder.
