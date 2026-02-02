@@ -8,10 +8,16 @@ export function ProofStrip() {
     <section
       id="proof"
       className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-y border-border bg-muted/30 scroll-mt-20"
-      aria-label="Proof and focus areas"
+      aria-labelledby="proof-heading"
     >
       <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <h2
+          id="proof-heading"
+          className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground mb-10 md:mb-12 text-center"
+        >
+          Multi-stakeholder Leadership
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12">
           {proofStrip.map((item, i) => (
             <motion.div
               key={item.label}

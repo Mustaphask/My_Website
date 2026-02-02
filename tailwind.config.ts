@@ -37,8 +37,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        sans: ["var(--font-open-sans)", "var(--font-inter)", "system-ui", "sans-serif"],
+        heading: ["var(--font-poppins)", "system-ui", "sans-serif"],
+        mono: ["ui-monospace", "monospace"],
       },
       fontSize: {
         "hero": ["clamp(2.75rem, 7vw, 5rem)", { lineHeight: "1.08", letterSpacing: "-0.03em" }],

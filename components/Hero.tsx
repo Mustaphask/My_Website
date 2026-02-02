@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/lib/data";
 
@@ -87,7 +86,7 @@ export function Hero() {
           variants={item}
           className="text-hero font-semibold tracking-tight text-foreground mb-5"
         >
-          {profile.name}
+          Hi, I&apos;m Mustafa
         </motion.h1>
         <motion.p
           variants={item}
@@ -105,7 +104,7 @@ export function Hero() {
           variants={item}
           className="text-foreground/90 text-hero-sub max-w-xl leading-relaxed font-medium mb-10"
         >
-          I help organizations align strategy, operations, and growth—through ERP advisory, partnership development, and account leadership.
+          {profile.tagline}
         </motion.p>
         <motion.div variants={item}>
           <Button
@@ -150,7 +149,7 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors z-10"
       >
         <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <ChevronDown className="h-5 w-5 animate-bounce" aria-hidden />
+        <i className="fa-solid fa-chevron-down text-lg animate-bounce" aria-hidden />
       </motion.a>
     </section>
   );

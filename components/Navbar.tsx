@@ -53,7 +53,7 @@ export function Navbar() {
           className="text-lg font-semibold text-foreground underline-reveal hover:opacity-90 transition-opacity"
           aria-label="Go to top"
         >
-          {profile.name.split(" ")[0]}
+          {profile.name}
         </Link>
 
         <ul className="hidden md:flex items-center gap-1" role="menubar">
@@ -68,7 +68,25 @@ export function Navbar() {
               </Link>
             </li>
           ))}
-          <li className="ml-2 flex items-center gap-2">
+          <li className="ml-2 flex items-center gap-3">
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded-md hover:bg-muted/80"
+              aria-label="LinkedIn profile"
+            >
+              <i className="fa-brands fa-linkedin-in text-lg" aria-hidden />
+            </a>
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded-md hover:bg-muted/80"
+              aria-label="Email"
+            >
+              <i className="fa-solid fa-envelope text-lg" aria-hidden />
+            </a>
+          </li>
+          <li className="ml-1 flex items-center gap-2">
             {mounted && (
               <Button
                 variant="ghost"
@@ -97,6 +115,22 @@ export function Navbar() {
         </ul>
 
         <div className="flex md:hidden items-center gap-2">
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded-md"
+            aria-label="LinkedIn profile"
+          >
+            <i className="fa-brands fa-linkedin-in text-lg" aria-hidden />
+          </a>
+          <a
+            href={`mailto:${profile.email}`}
+            className="text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded-md"
+            aria-label="Email"
+          >
+            <i className="fa-solid fa-envelope text-lg" aria-hidden />
+          </a>
           {mounted && (
             <Button
               variant="ghost"

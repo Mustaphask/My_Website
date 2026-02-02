@@ -1,15 +1,18 @@
 // ——— Profile ———
 export const profile = {
   name: "Mustafa Skaiki",
+  /** Display name for header / hero */
+  displayName: "Mustafa",
   headline: "Business Developer · ERP & Digital Transformation",
   location: "Beirut, Lebanon",
+  tagline:
+    "I help organizations align strategy, operations, and growth through ERP advisory, partnership development, and account leadership.",
   email: "m.skaiky92@gmail.com",
   phone: "+961 3 932 304",
   phoneTel: "+9613932304",
   linkedin: "https://www.linkedin.com/in/mustapha-skaiki-9536b1164/",
   cvUrl: "/Mustafa-Skaiki-CV.pdf",
   calendlyUrl: "https://calendly.com/your-link",
-  /** Profile photo for navbar. Use public/assets/personal-pic.jpg (or .png) */
   avatarSrc: "/assets/personal-pic.jpg",
 } as const;
 
@@ -17,25 +20,19 @@ export const profile = {
 export const summary =
   "I help organizations align strategy, operations, and growth—through ERP advisory, partnership development, and account leadership. Focused on clarity, execution, and long-term value.";
 
-// ——— Proof strip (qualitative, no invented numbers) ———
+// ——— Multi-stakeholder Leadership ———
 export const proofStrip = [
-  { label: "Multi-stakeholder leadership", value: "Cross-functional teams & partners" },
-  { label: "Domain focus", value: "ERP & digital transformation" },
-  { label: "Regional exposure", value: "Lebanon, GCC, Middle East" },
-  { label: "Partnership & growth", value: "Strategic alliances & account expansion" },
+  { label: "Domain Focus", value: "ERP & digital transformation" },
+  { label: "Regional Exposure", value: "Lebanon, GCC, Middle East" },
+  { label: "Partnership & Growth", value: "Strategic alliances & account expansion" },
 ] as const;
 
-// ——— Signature services (3) ———
+// ——— Signature Services (2) ———
 export const services = [
   {
     title: "ERP Advisory & Scoping",
     description:
       "Requirements analysis, solution scoping, and process alignment for Odoo and digital operations—so implementations stay on strategy and on budget.",
-  },
-  {
-    title: "Go-to-Market & Partnerships",
-    description:
-      "Market entry, channel development, and strategic partnerships. From cold outreach to signed agreements and long-term collaboration.",
   },
   {
     title: "Account Growth & Retention",
@@ -96,26 +93,20 @@ export const experienceSnapshot = {
   ],
 } as const;
 
-// ——— Skills chart: sorted highest to lowest. Business + technical (realistic scores 1–10) ———
+// ——— Skills: self-assessed proficiency 1–10 (sorted highest to lowest) ———
 export const skillsChart = [
   { subject: "Relationship building", value: 9, fullMark: 10 },
   { subject: "Communication", value: 9, fullMark: 10 },
   { subject: "Strategic thinking", value: 9, fullMark: 10 },
   { subject: "Sales & negotiation", value: 9, fullMark: 10 },
   { subject: "Adaptability", value: 9, fullMark: 10 },
-  { subject: "ERP Systems (Odoo)", value: 8, fullMark: 10 },
+  { subject: "CRM Systems", value: 8, fullMark: 10 },
   { subject: "Digital transformation", value: 8, fullMark: 10 },
   { subject: "Leadership", value: 8, fullMark: 10 },
   { subject: "Project management", value: 8, fullMark: 10 },
-  { subject: "Market research", value: 8, fullMark: 10 },
+  { subject: "Vendor network", value: 8, fullMark: 10 },
   { subject: "Analytical skills", value: 8, fullMark: 10 },
   { subject: "Problem-solving", value: 8, fullMark: 10 },
-  { subject: "SaaS product thinking", value: 7, fullMark: 10 },
-  { subject: "Agile product delivery", value: 7, fullMark: 10 },
-  { subject: "Technical project scoping", value: 7, fullMark: 10 },
-  { subject: "UI/UX collaboration", value: 6, fullMark: 10 },
-  { subject: "API & backend (NestJS basics)", value: 6, fullMark: 10 },
-  { subject: "Databases (MySQL / Prisma basics)", value: 6, fullMark: 10 },
 ] as const;
 
 // ——— Values & approach (4 premium cards; no fake testimonials) ———
