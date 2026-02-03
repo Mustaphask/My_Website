@@ -1,17 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin } from "lucide-react";
 import { profile } from "@/lib/data";
 
 const contactItems = [
-  {
-    label: "Phone",
-    value: profile.phone,
-    href: `tel:${profile.phoneTel}`,
-    icon: Phone,
-    ariaLabel: "Call Mustafa Skaiki",
-  },
   {
     label: "Email",
     value: profile.email,
