@@ -1,29 +1,40 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#work" },
-  { label: "Testimonials", href: "#values" },
-  { label: "Blog", href: "#skills" },
+  { label: "Services", href: "/#services" },
+  { label: "Portfolio", href: "/#work" },
+  { label: "Philosophy", href: "/#values" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeHash, setActiveHash] = useState("#services");
+  const [activeHash, setActiveHash] = useState("");
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleHash = () => setActiveHash(window.location.hash || "#services");
+    const handleHash = () => setActiveHash(window.location.hash || "");
     handleHash();
     window.addEventListener("hashchange", handleHash);
     return () => window.removeEventListener("hashchange", handleHash);
   }, []);
 
   const closeMobile = () => setMobileOpen(false);
+
+  const isLinkActive = (link: { href: string }) => {
+    if (link.href.startsWith("/#")) {
+      const hash = link.href.slice(1);
+      return pathname === "/" && activeHash === hash;
+    }
+    return pathname === link.href || pathname.startsWith(link.href + "/");
+  };
 
   return (
     <>
@@ -35,28 +46,28 @@ export function Navbar() {
         role="navigation"
         aria-label="Main navigation"
       >
-        <a href="#hero" className="navbar-brand">
+        <Link href="/" className="navbar-brand">
           <span className="navbar-mark" aria-hidden />
-          {` ${"Mustafa".toUpperCase()}`}
-        </a>
+          {" MUSTAFA"}
+        </Link>
 
         <div className="navbar-links">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
-              className={`navbar-link ${activeHash === link.href ? "active" : ""}`}
+              className={`navbar-link ${isLinkActive(link) ? "active" : ""}`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         <div className="flex items-center justify-end gap-2 sm:gap-3">
           <ThemeToggle />
-          <a href="#contact" className="navbar-cta hidden sm:inline-flex">
+          <Link href="/#contact" className="navbar-cta hidden sm:inline-flex">
             Connect
-          </a>
+          </Link>
           <button
             className="mobile-menu-btn"
             onClick={() => setMobileOpen(true)}
@@ -87,30 +98,30 @@ export function Navbar() {
               <X size={28} />
             </button>
             {navLinks.map((link, i) => (
-              <motion.a
+              <motion.div
                 key={link.label}
-                href={link.href}
-                className="mobile-menu-link"
-                onClick={closeMobile}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06 }}
               >
-                {link.label}
-              </motion.a>
+                <Link
+                  href={link.href}
+                  className="mobile-menu-link"
+                  onClick={closeMobile}
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
             <div className="pt-4 flex items-center justify-center gap-4">
               <ThemeToggle />
-              <motion.a
-                href="#contact"
+              <Link
+                href="/#contact"
                 className="mobile-menu-link text-[var(--turquoise)]"
                 onClick={closeMobile}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.06 }}
               >
                 Connect
-              </motion.a>
+              </Link>
             </div>
           </motion.div>
         )}

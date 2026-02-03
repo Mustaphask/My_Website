@@ -46,10 +46,10 @@ export function Hero() {
           transition={{ duration: 0.4, delay: 0.4 }}
         >
           <a href="#work" className="hero-cta">
-            See my work
+            Portfolio
           </a>
           <a href="#contact" className="hero-cta-outline">
-            Start a project
+            Let&apos;s Talk
           </a>
         </motion.div>
       </div>
@@ -62,13 +62,15 @@ export function Hero() {
       >
         <div className="hero-dots" aria-hidden />
         <div className="hero-avatar">
-          <Image
-            src={profile.avatarSrc}
-            alt={profile.name}
-            fill
-            priority
-            sizes="(max-width: 900px) 80vw, 40vw"
-          />
+          <div className="hero-avatar-inner">
+            <Image
+              src={profile.avatarSrc}
+              alt={profile.name}
+              fill
+              priority
+              sizes="(max-width: 900px) 80vw, 40vw"
+            />
+          </div>
         </div>
       </motion.div>
     </section>
