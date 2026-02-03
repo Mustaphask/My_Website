@@ -1,38 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Section } from "@/components/Section";
-import { Card, CardContent } from "@/components/ui/card";
 import { values } from "@/lib/data";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 export function Values() {
   return (
-    <Section id="values" title="Values & Approach">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-        {values.map((item, i) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.06 }}
-          >
-            <Card
-              className="h-full border-border bg-card rounded-none transition-all duration-300 hover:border-foreground/30 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] hover:scale-[1.02] hover:-translate-y-0.5"
-              role="article"
-            >
-              <CardContent className="p-6 md:p-8">
-                <h3 className="text-lg font-semibold text-foreground mb-3 tracking-tight">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+    <section id="values" className="section" aria-labelledby="values-heading">
+      <div className="section-container">
+        <motion.div
+          className="section-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="section-label">Philosophy</span>
+          <h2 id="values-heading" className="section-title">
+            Values &amp; Approach
+          </h2>
+        </motion.div>
+
+        <motion.div
+          className="values-grid"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {values.map((value, index) => (
+            <motion.div key={index} className="value-card" variants={item}>
+              <h3 className="value-title">{value.title}</h3>
+              <p className="value-description">{value.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </Section>
+    </section>
   );
 }

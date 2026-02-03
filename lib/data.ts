@@ -20,6 +20,15 @@ export const profile = {
 export const summary =
   "I help organizations align strategy, operations, and growth—through ERP advisory, partnership development, and account leadership. Focused on clarity, execution, and long-term value.";
 
+// ——— Companies / places worked (for trust strip) ———
+export const companies = [
+  "Brainkets",
+  "Appness",
+  "Qatar University",
+  "Genesis Technologies",
+  "American Express",
+] as const;
+
 // ——— Multi-stakeholder Leadership ———
 export const proofStrip = [
   { label: "Domain Focus", value: "ERP & digital transformation" },
@@ -94,20 +103,33 @@ export const experienceSnapshot = {
 } as const;
 
 // ——— Skills: self-assessed proficiency 1–10 (sorted highest to lowest) ———
-export const skillsChart = [
-  { subject: "Relationship building", value: 9, fullMark: 10 },
-  { subject: "Communication", value: 9, fullMark: 10 },
-  { subject: "Strategic thinking", value: 9, fullMark: 10 },
-  { subject: "Sales & negotiation", value: 9, fullMark: 10 },
-  { subject: "Adaptability", value: 9, fullMark: 10 },
-  { subject: "CRM Systems", value: 8, fullMark: 10 },
-  { subject: "Digital transformation", value: 8, fullMark: 10 },
-  { subject: "Leadership", value: 8, fullMark: 10 },
-  { subject: "Project management", value: 8, fullMark: 10 },
-  { subject: "Vendor network", value: 8, fullMark: 10 },
-  { subject: "Analytical skills", value: 8, fullMark: 10 },
-  { subject: "Problem-solving", value: 8, fullMark: 10 },
+export const skills = [
+  // Business skills (high ratings)
+  { name: "Relationship Building", value: 9 },
+  { name: "Communication", value: 9 },
+  { name: "Strategic Thinking", value: 9 },
+  { name: "Sales & Negotiation", value: 9 },
+  { name: "Adaptability", value: 9 },
+  { name: "CRM Systems", value: 8 },
+  { name: "Digital Transformation", value: 8 },
+  { name: "Leadership", value: 8 },
+  { name: "Project Management", value: 8 },
+  { name: "Vendor Network", value: 8 },
+  { name: "Analytical Skills", value: 8 },
+  { name: "Problem-solving", value: 8 },
+  // Technical skills (beginner/intermediate awareness)
+  { name: "API & Backend Understanding (NestJS)", value: 4 },
+  { name: "Databases (MySQL / Prisma)", value: 4 },
+  { name: "Flutter & Mobile App Collaboration", value: 3 },
+  { name: "DevOps & Deployment (Vercel/Netlify)", value: 3 },
 ] as const;
+
+// Legacy export for compatibility
+export const skillsChart = skills.map((s) => ({
+  subject: s.name,
+  value: s.value,
+  fullMark: 10,
+}));
 
 // ——— Values & approach (4 premium cards; no fake testimonials) ———
 export const values = [
@@ -151,6 +173,7 @@ export const certificate = { name: "Project Management", issuer: "Google" } as c
 export type Profile = typeof profile;
 export type Service = (typeof services)[number];
 export type SelectedWorkItem = (typeof selectedWork)[number];
+export type Skill = (typeof skills)[number];
 export type SkillsChartItem = (typeof skillsChart)[number];
 export type ValueItem = (typeof values)[number];
 export type EducationItem = (typeof education)[number];

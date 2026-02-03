@@ -3,15 +3,16 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 500);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      setVisible(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
@@ -21,22 +22,17 @@ export function BackToTop() {
   return (
     <AnimatePresence>
       {visible && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.2 }}
-          className="fixed bottom-8 right-8 z-40"
+        <motion.button
+          className="back-to-top"
+          onClick={scrollToTop}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
+          aria-label="Back to top"
         >
-          <Button
-            size="icon"
-            onClick={scrollToTop}
-            aria-label="Back to top"
-            className="h-12 w-12 rounded-none shadow-lg border border-border bg-card hover:bg-muted"
-          >
-            <ArrowUp className="h-5 w-5" aria-hidden />
-          </Button>
-        </motion.div>
+          <ArrowUp size={20} />
+        </motion.button>
       )}
     </AnimatePresence>
   );

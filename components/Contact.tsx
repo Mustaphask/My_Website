@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, Linkedin } from "lucide-react";
 import { Section } from "@/components/Section";
-import { Card, CardContent } from "@/components/ui/card";
 import { profile } from "@/lib/data";
 
 const contactCards = [
@@ -63,24 +62,20 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
+              className="contact-card group"
             >
-              <Card
-                className="h-full border-border bg-card rounded-none transition-all duration-300 hover:border-foreground/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] hover:scale-[1.02] hover:-translate-y-0.5"
-                role="article"
-              >
-                <CardContent className="p-6 md:p-8 flex flex-col items-center text-center">
-                  <item.icon
-                    className="h-8 w-8 text-foreground/80 mb-4"
-                    aria-hidden
-                  />
-                  <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-2">
-                    {item.label}
-                  </p>
-                  <p className="text-sm font-medium text-foreground break-all">
-                    {item.value}
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="contact-card-inner">
+                <item.icon
+                  className="contact-card-icon"
+                  aria-hidden
+                />
+                <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-2">
+                  {item.label}
+                </p>
+                <p className="contact-card-value">
+                  {item.value}
+                </p>
+              </div>
             </motion.a>
           ))}
         </div>

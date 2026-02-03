@@ -23,10 +23,7 @@ const openSans = Open_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1e40af" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-  ],
+  themeColor: "#f6f9fe",
 };
 
 export const metadata: Metadata = {
@@ -78,12 +75,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased min-h-screen">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem storageKey="portfolio-theme">
           {children}
         </ThemeProvider>
       </body>

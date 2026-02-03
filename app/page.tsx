@@ -1,12 +1,11 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { ProofStrip } from "@/components/ProofStrip";
+import { CompaniesStrip } from "@/components/CompaniesStrip";
 import { Services } from "@/components/Services";
-import { SelectedWork } from "@/components/SelectedWork";
-import { SkillsChart } from "@/components/SkillsChart";
-import { ExperienceSnapshot } from "@/components/ExperienceSnapshot";
+import { WorkHighlights } from "@/components/WorkHighlights";
+import { SkillsPoll } from "@/components/SkillsPoll";
 import { Values } from "@/components/Values";
-import { Contact } from "@/components/Contact";
+import { ContactCards } from "@/components/ContactCards";
 import { BackToTop } from "@/components/BackToTop";
 
 export default function Home() {
@@ -14,16 +13,35 @@ export default function Home() {
     <>
       <div className="noise" aria-hidden />
       <Navbar />
+
       <main id="main-content" role="main">
         <Hero />
-        <ProofStrip />
+        <CompaniesStrip />
+
+        <div className="section-divider" />
         <Services />
-        <SelectedWork />
-        <SkillsChart />
-        <ExperienceSnapshot />
+
+        <div className="section-divider" />
+        <WorkHighlights />
+
+        <div className="section-divider" />
+        <SkillsPoll />
+
+        <div className="section-divider" />
         <Values />
-        <Contact />
+
+        <div className="section-divider" />
+        <ContactCards />
       </main>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p className="footer-text">
+          © {new Date().getFullYear()} Mustafa Skaiki. All rights reserved.
+        </p>
+      </footer>
+
+      {/* Back to top button */}
       <BackToTop />
     </>
   );
