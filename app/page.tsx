@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero";
 import { CompaniesStrip } from "@/components/CompaniesStrip";
 import { Services } from "@/components/Services";
 import { WorkHighlights } from "@/components/WorkHighlights";
-import { SkillsPoll } from "@/components/SkillsPoll";
+import { CoreCompetenciesHistogram } from "@/components/CoreCompetenciesHistogram";
 import { Values } from "@/components/Values";
 import { ContactCards } from "@/components/ContactCards";
 import { BackToTop } from "@/components/BackToTop";
@@ -24,8 +24,7 @@ export default function Home() {
         <div className="section-divider" />
         <WorkHighlights />
 
-        <div className="section-divider" />
-        <SkillsPoll />
+        <CoreCompetenciesHistogram />
 
         <div className="section-divider" />
         <Values />

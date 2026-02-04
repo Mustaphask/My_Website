@@ -10,7 +10,7 @@ export const profile = {
   email: "m.skaiky92@gmail.com",
   phone: "+961 3 932 304",
   phoneTel: "+9613932304",
-  linkedin: "https://www.linkedin.com/in/mustapha-skaiki-9536b1164/",
+  linkedin: "https://www.linkedin.com/in/mustafa-skaiki-9536b1164/",
   cvUrl: "/Mustafa-Skaiki-CV.pdf",
   calendlyUrl: "https://calendly.com/your-link",
   avatarSrc: "/assets/personal-pic.jpg",

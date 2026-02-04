@@ -43,10 +43,22 @@ export function SkillsPoll() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {topSkills.map((skill) => (
+          {topSkills.map((skill, index) => (
             <motion.div key={skill.name} className="skill-card" variants={item}>
-              <div className="skill-card-percent">{skill.value * 10}%</div>
               <div className="skill-card-name">{skill.name}</div>
+              <div className="skill-card-bar">
+                <motion.div
+                  className="skill-card-bar-fill"
+                  initial={{ width: "0%" }}
+                  whileInView={{ width: `${(skill.value / 10) * 100}%` }}
+                  viewport={{ once: true, margin: "-20% 0px" }}
+                  transition={{
+                    duration: 0.7,
+                    ease: "easeOut",
+                    delay: index * 0.03,
+                  }}
+                />
+              </div>
             </motion.div>
           ))}
         </motion.div>
