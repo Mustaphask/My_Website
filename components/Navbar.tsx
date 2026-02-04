@@ -10,6 +10,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 const navLinks = [
   { label: "Services", href: "/#services" },
   { label: "Portfolio", href: "/#work" },
+  { label: "Core Competencies", href: "/#core-competencies" },
   { label: "Philosophy", href: "/#values" },
   { label: "Blog", href: "/blog" },
 ];
